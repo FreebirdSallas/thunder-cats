@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+  <html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Project Thunder-Cats</title>
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Bootstrap CDN-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <!-- Firebase Reference -->
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+  </head>
+
+  <body>
+    <!---Ticketmaster 2 APIs:  Consumer Key    MlWuTeAgdA9ovlk9CCHiILZjDA9JuEPt             Consumer Secret    nDXAN5MobCOHWJEq
+    
+    
+    //Need to prepend saved events to <div id="saved-events"></div>
+    
+    //Need to add checkbox 
+    -->
+      <form>
+      <input type="radio" name="save" value="save"> Save Event
+      <p><input type="submit" value="Submit" id="saveButton"></p>
+      </form>
+
+    
+    <script>    $(document).ready(function () {
+
+      var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?city=Richmond&state=va&apikey=MlWuTeAgdA9ovlk9CCHiILZjDA9JuEPt"
+   
+      $.ajax({
+          url: queryURL,
+          method: "GET"
+      }).then(function (response) {
+          console.log(response);
+   
+          console.log(response._embedded.events[0].name);
+          console.log(response._embedded.events[1].name);
+          console.log(response._embedded.events[2].name);
+          console.log(response._embedded.events[4].name);
+   
+          console.log(response._embedded.events[0].url);
+   
+   
+      });
+   });
+
+  </script>
+
+
+  </body>
+  </html>
