@@ -47,7 +47,9 @@ $(document).ready(function () {
 
 
     });
-    var queryLink = "https://www.eventbrite.com/oauth/authorize?response_type=token&client_id=IV365KTJWSPQYP5ONS&redirect_uri=https://freebirdsallas.github.io/thunder-cats"
+    
+    //second API AJAX call (correct syntax)
+    var queryLink = "https://www.eventzillaapi.net/api/v2/events?status=live&apikey=n85eOzYa9C4ujShQI7ipmLKkt4d2z0Y3mIjGz5V7"
     $.ajax({
         url: queryLink,
         method: "GET"
