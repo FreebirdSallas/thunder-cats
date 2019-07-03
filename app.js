@@ -47,7 +47,7 @@ $(document).ready(function () {
 
 
     });
-    var queryLink = "https://www.eventbrite.com/oauth/authorize?response_type=token&client_id=EQD2EBKNFSTMSPVNWFUS&redirect_uri=https://freebirdsallas.github.io/thunder-cats"
+    var queryLink = "https://www.eventbrite.com/oauth/authorize?response_type=token&client_id=IV365KTJWSPQYP5ONS&redirect_uri=https://freebirdsallas.github.io/thunder-cats"
     $.ajax({
         url: queryLink,
         method: "GET"
