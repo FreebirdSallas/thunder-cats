@@ -8,9 +8,12 @@ body{
 }
 .welcome-p{
     color: white;
-    box-shadow: 10px 10px 5px #202020;
-
+    text-align: center;
 }
 .container{
     padding-left: 5%;
+}
+
+nav {
+    text-align: center;
 }
