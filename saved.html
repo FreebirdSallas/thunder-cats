@@ -1,71 +1,44 @@
 <!DOCTYPE html>
-  <html lang="en-us">
-  <head>
-    <meta charset="UTF-8">
-    <title>Project Thunder-Cats</title>
-    <!-- jQuery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!-- Bootstrap CDN-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <!-- Firebase Reference -->
-    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
-    <!-- css link -->
-    <link rel="stylesheet" type="text/css" href="assets/style.css">
-  </head>
+<html lang="en-us">
 
-  <body>
-    <!---Ticketmaster 2 APIs:  Consumer Key    MlWuTeAgdA9ovlk9CCHiILZjDA9JuEPt             Consumer Secret    nDXAN5MobCOHWJEq
-    
-    
-    //Need to prepend saved events to <div id="saved-events"></div>
-    
-    //Need to add checkbox 
-    -->
-      <form>
-      <input type="radio" name="save" value="save"> Save Event
-      <p><input type="submit" value="Submit" id="saveButton"></p>
-      </form>
+<head>
+  <meta charset="UTF-8">
+  <title>Project Thunder-Cats</title>
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- Bootstrap CDN-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <!-- Firebase Reference -->
+  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+  <!-- css link -->
+  <link rel="stylesheet" type="text/css" href="assets/style.css">
+  <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-database.js"></script>
+</head>
 
-    
-    <script>    $(document).ready(function () {
-
-      var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?city=Richmond&state=va&apikey=MlWuTeAgdA9ovlk9CCHiILZjDA9JuEPt"
-   
-      $.ajax({
-          url: queryURL,
-          method: "GET"
-      }).then(function (response) {
-          console.log(response);
-   
-          console.log(response._embedded.events[0].name);
-          console.log(response._embedded.events[1].name);
-          console.log(response._embedded.events[2].name);
-          console.log(response._embedded.events[4].name);
-   
-          console.log(response._embedded.events[0].url);
-   
-   
-      });
-   });
-
-  </script>
+<body>
 
 
-    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
-      <h1>RVA.B.C's</h1>
-    </nav>
-<div class="container">
+  <nav class="navbar navbar-light" style= "background-color: white">
+    <h1>RVA.B.C's</h1>
+  </nav>
+  <div class="container">
     <ul class="nav nav-tabs">
       <li class="nav-item">
-        <a class="nav-link active" href="welCom.html">Home</a>
+        <a class="nav-link active bg-dark" href="welCom.html" style="color: white;">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="index.html">Events</a>
+        <a class="nav-link active bg-dark" href="events-page.html" style="color: white;">Events</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="saved.html">Events Saved</a>
+        <a class="nav-link active bg-dark" href="saved.html" style="color: white;">Events Saved</a>
       </li>
     </ul>
-  </body>
-  </html>
+
+    
+    <div id="savedContainer"></div>
+    <script src="./secondjs.js"></script> 
+</body>
+
+</html>
