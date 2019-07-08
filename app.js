@@ -30,24 +30,57 @@ $(document).ready(function () {
 
         console.log(response._embedded.events[0].url);
 
+        for(i = 0; i < response._embedded.events.length; i++) {
+            var newCard = $("<div>");
+            newCard.addClass("list-group list-group-flush");
+            $(".list-group-flush").addClass("list-group-item");
+            newCard.append(response._embedded.events[i].name);
+            newCard.append(response._embedded.events[i].url);
+            newCard.append(response._embedded.events[i].dates.start.localDate);
+        $(".card-body").append(newCard);
+        
+        }
+        database.ref().on("child_added", function(childSnapshot, prevChildKey) {
+            console.log(childSnapshot.val().response);
+            var eventName = childSnapshot.val().response._embedded.events[i].name;
+        })
+    
         //Venue and address Property-  response._embedded.events[i]._embedded.venues[i].address
-        console.log(response._embedded.events[0]._embedded.venues[0]);gig
-        console.log(response._embedded.events[0]._embedded.venues[0].address);
-
+       
+    
 
 //===========================================================================
-        var eventName0 = response._embedded.events[0].name;
-        var ticketURL0 = response._embedded.events[0].url;
+     var queryLink = "https://api.openbrewerydb.org/breweries?by_city=richmond&by_state=virginia&limit=30"
 
-        var eventname8 = response._embedded.events[8].name;
-        var ticketURL8 = response._embedded.events[8].url;
-
-        
-        $("#name0").html(eventName0);
-        $("#url0").html(ticketURL0);
-
-        $("#name8").html(eventname8);
-        $("#url8").html(ticketURL8);
+     $.ajax({
+         url: queryLink,
+         method: "GET"
+     }).then(function (response) {
+         console.log(response);
+         for(i = 0; i < response.length; i++) {
+             console.log(response[i].name);
+             /*var secondCard = $("<div>");
+             secondCard.addClass("card-title");
+             secondCard.append(response[i].name);
+             secondCard.append(response[i].website_url);
+             secondCard.append(response[i].street);
+            $(".card-body").append(secondCard);*/
+         }
+        })
+            $(".card-body").on("click", ".savedButton", function(event){
+                event.preventDefault();
+                console.log("TEST");
+                //var title= $(this).attr("data-value");
+                //var description= $(this).attr("data-description");
+                var name= $('response[i].name').val();
+                var websiteURL = $('response[i].website_url').val();
+                var title = $("<h1>").text(name);
+                var description = $("<a>").attr("href", websiteURL);
+                database.ref().push({
+                    title: title,
+                    description: description,
+         })
+    
 
 //=============================================
 //ESSENTIAL PROPERTIES
@@ -56,26 +89,28 @@ $(document).ready(function () {
   //==================================================================      
         //Make an array/for-loop for the various events
 
-        //eventArr = [response._embedded.events[0], 'response._embedded.events[1]',  'response._embedded.events[2]', 'response._embedded.events[3]', 'response._embedded.events[4]', 'response._embedded.events[5]', 'response._embedded.events[6]', 'response._embedded.events[7]', 'response._embedded.events[8]', 'response._embedded.events[9]'];
-        //for(i = 0; i < eventArr.length; i++) {
-            //$("#results").html(eventArr);
         
 
         
-    });
+
   
 
-});
+
 
 //DJH July 5th updates: on click pushes data-title & data-description from events page to database. firebase linked, 2nd JS file appends saved events, nav tabs updated
-$(".card-body").on("click", ".savedButton", function(event){
+/*$(".card-body").on("click", ".savedButton", function(event){
     event.preventDefault();
     console.log("TEST");
-    var title = $(this).attr("data-title").trim();
-    var description = $(this).attr("data-description").trim();
+    var title= $(this).attr("data-value");
+    var description= $(this).attr("data-description");
+    //var title = $("<h1>").text(_embedded.events[i].name);
+    //var description = $("<a>").attr("href", _embedded.events[i].url);
     database.ref().push({
         title: title,
         description: description,
+    })*/
+})
+//});
+/*end of July 5th updates*/
     })
 })
-/*end of July 5th updates*/
