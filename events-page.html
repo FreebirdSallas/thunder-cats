@@ -4,18 +4,19 @@
 <head>
   <meta charset="UTF-8">
   <title>Project Thunder-Cats</title>
-  <!-- jQuery -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <!-- Bootstrap CDN-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+   <!-- css link -->
+   <link rel="stylesheet" type="text/css" href="assets/style.css">
+    <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <!-- Firebase Reference -->
   <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
-  <!-- css link -->
-  <link rel="stylesheet" type="text/css" href="assets/style.css">
+ 
 </head>
 
-<body>
+<body class="event-body">
 
   <nav class="navbar navbar-light" style= "background-color: white">
     <h1>RVA.B.C's</h1>
@@ -34,7 +35,7 @@
         </ul>
       <form>
           <div>
-            <label for="eday">Enter your birthday:</label>
+            <label for="eday" class="eventBar">Event Date Here:</label>
             <input type="date" id="eday" name="eday" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
             <!-- <span class="validity"></span> -->
           <input type="submit">
