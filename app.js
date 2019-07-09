@@ -34,15 +34,59 @@ $(document).ready(function () {
             var newCard = $("<div>");
             newCard.addClass("list-group list-group-flush");
             $(".list-group-flush").addClass("list-group-item");
+            
             newCard.append(response._embedded.events[i].name);
             newCard.append(response._embedded.events[i].url);
-            newCard.append(response._embedded.events[i].dates.start.localDate);
-        $(".card-body").append(newCard);
+            newCard.prepend(response._embedded.events[i].dates.start.localDate);
+        $("#event-card").append(newCard);
         
         }
-        database.ref().on("child_added", function(childSnapshot, prevChildKey) {
+        //creating a checkbox for each event card
+        $('<input type="checkbox" name="myCheckbox" />').prependTo(".list-group-item");
+        
+        /*function getRadioVal(form, name) {
+            var val;
+            //get list of checkbox buttons
+            var checkboxes = form.elements[name];
+
+            //loop through list of checkbox buttons
+            for(var i=0, len=checkboxes.length; i<len; i++) {
+                if(checkboxes[i].checked) {  //is it checked?
+                    val = checkboxes[i].value; //if so, hold its value
+                    break; // and break out of for loop
+                }
+            }
+            return val; //return value of checked radio or undefined if none checked
+        }
+        
+        /*var myArr = [response._embedded.events[i]];
+        for(i = 0; i < response._embedded.events.length; i++) {
+            getRadioVal(); 
+        })*/
+        
+        
+
+        $(".card-body").on("click", ".savedButton", function(event){
+            event.preventDefault();
+            console.log("TEST");
+            var dataValue= response._embedded.events[i].name.val();
+            var dataDescription= response._embedded.events[i].url.val();
+            var title= $(this).attr(dataValue);
+            var description= $(this).attr(dataDescription);
+            //var title = $("<h1>").text(response._embedded.events[i].name);
+            //var description = $("<a>").attr("href", websiteURL);
+
+           
+            
+            database.ref().push({
+                title: title,
+                description: description
+            })
+            //see whether prevChildKey is necessary or not
+        database.ref().on("child_added", function(childSnapshot) {
             console.log(childSnapshot.val().response);
-            var eventName = childSnapshot.val().response._embedded.events[i].name;
+            //var eventName = childSnapshot.val().response._embedded.events[i].name;
+            //console.log(eventName);
         })
     
         //Venue and address Property-  response._embedded.events[i]._embedded.venues[i].address
@@ -59,28 +103,29 @@ $(document).ready(function () {
          console.log(response);
          for(i = 0; i < response.length; i++) {
              console.log(response[i].name);
-             /*var secondCard = $("<div>");
-             secondCard.addClass("card-title");
+             console.log(response[i].street);
+             var secondCard = $("<div>");
+             secondCard.addClass("list-group list-group-flush");
+             $(".list-group-flush").addClass("list-group-item");
              secondCard.append(response[i].name);
              secondCard.append(response[i].website_url);
              secondCard.append(response[i].street);
-            $(".card-body").append(secondCard);*/
+            $("#over-21-card").prepend(secondCard);
          }
         })
-            $(".card-body").on("click", ".savedButton", function(event){
+            /*$(".card-body").on("click", ".savedButton", function(event){
                 event.preventDefault();
                 console.log("TEST");
                 //var title= $(this).attr("data-value");
                 //var description= $(this).attr("data-description");
-                var name= $('response[i].name').val();
-                var websiteURL = $('response[i].website_url').val();
-                var title = $("<h1>").text(name);
+                //var name= $(response[i].name).val();
+                //var websiteURL = $(response[i].website_url).val();
+                var title = $("<h1>").text(response[i].name);
                 var description = $("<a>").attr("href", websiteURL);
                 database.ref().push({
                     title: title,
-                    description: description,
-         })
-    
+                    description: description,*/
+                })
 
 //=============================================
 //ESSENTIAL PROPERTIES
@@ -112,5 +157,7 @@ $(document).ready(function () {
 })
 //});
 /*end of July 5th updates*/
+//})
     })
-})
+
+
