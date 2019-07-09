@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Project Thunder-Cats</title>
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- Bootstrap CDN-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <!-- Firebase Reference -->
+  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+  <!-- css link -->
+  <link rel="stylesheet" type="text/css" href="assets/style.css">
+  <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-database.js"></script>
+</head>
+
+<body>
+
+
+  <nav class="navbar navbar-light" style="background-color: white">
+    <h1>RVA.B.C's</h1>
+  </nav>
+  <div class="container">
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link active bg-dark" href="welCom.html" style="color: white;">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active bg-dark" href="events-page.html" style="color: white;">Events</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active bg-dark" href="over21.html" style="color: white;">Over 21</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active bg-dark" href="saved.html" style="color: white;">Events Saved</a>
+      </li>
+    </ul>
+
+    <h1 style="color: white">I LOVE BEER</h1>
+    <!--
+    <div id="brewery-response">
+      <div class="card">
+        <img class="card-img-top" src="" alt="">
+        <div class="card-body">
+          <h4 class="card-title">Brewery Name</h4>
+          <p class="card-text">
+            Brewery description
+          </p>
+          <button class="savedButton btn btn-info" data-title="Browns Island concert"
+            data-description="description of the event">Add to saved events</button>
+
+        </div>
+      </div>
+    </div>
+    -->
+
+    <div id="appended"></div>
+
+    <script>
+
+      
+
+      var queryURL = "https://api.openbrewerydb.org/breweries?by_city=richmond&by_state=virginia"
+
+      $.ajax({
+        url: queryURL,
+        method: "GET"
+      }).then(function (response) {
+        console.log(response);
+
+        var breweryName = $("<h1>").text(response.name);
+        var breweryURL = $("<a>").attr("href", response.website_url);
+        var breweryAddress = $("<p>").text(response.street);
+        var breweryPhone = $("<h2>").text(response.phone);
+        
+
+        $("#appended").empty();
+        $("#appended").append(breweryName, breweryURL, breweryAddress);
+
+        console.log(breweryAddress);
+        console.log(breweryName);
+        console.log(breweryURL);
+        console.log(breweryPhone + "Shiiiit");
+      })
+
+    </script>
+</body>
+
+</html>
+
+<!--
+  function searchBreweryDB(artist) {   
+
+  var queryURL = "https://api.openbrewerydb.org/breweries?by_city=richmond&by_state=virginia"
+
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  }).then(function (response) {
+    console.log(response);
+
+    var breweryName = $("<h1>").text(response.name);
+    var breweryURL = $("<a>").attr("href", response.website_url);
+    var breweryAddress = $("<p>").text(response.street);
+    var breweryPhone = $("<h2>").text(response.phone);
+    
+
+    $("#appended").empty();
+    $("#appended").append(breweryName, breweryURL, breweryAddress);
+    $("#appended").append("HELLOOOOOOO")
+
+    console.log(breweryAddress);
+    console.log(breweryName);
+    console.log(breweryURL);
+    console.log(breweryPhone + "Shiiiit");
+  })
+  
+}
+searchBreweryDB();
+</script>
+-->
