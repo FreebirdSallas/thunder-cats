@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Project Thunder-Cats</title>
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- Bootstrap CDN-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <!-- Firebase Reference -->
+  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+  <!-- css link -->
+  <link rel="stylesheet" type="text/css" href="assets/style.css">
+</head>
+
+<body>
+
+  <nav class="navbar navbar-light" style= "background-color: white">
+    <h1>RVA.B.C's</h1>
+  </nav>
+  <div class="container">
+      <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link active bg-dark" href="welCom.html" style="color: white;">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active bg-dark" href="events-page.html" style="color: white;">Events</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active bg-dark" href="saved.html" style="color: white;">Events Saved</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active bg-dark" href="over-21.html" style="color: white;">Over 21- Breweries</a>
+          </li>
+        </ul>
+
+    <div id="api-response"> 
+      <div class="card">
+        <img class="card-img-top" src="" alt="">
+        <div class="card-body" id="over-21-card">
+          
+          <!--<button class="savedButton btn btn-info" >Add to saved events</button>-->
+          <!--data-title & data-description...are they necessary?-->
+    
+        </div>
+      </div>
+    </div>
+
+  <script src="./app.js"></script>
+</body>
+
+</html>
