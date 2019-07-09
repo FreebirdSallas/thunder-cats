@@ -32,7 +32,14 @@
             <a class="nav-link active bg-dark" href="saved.html" style="color: white;">Events Saved</a>
           </li>
         </ul>
-
+      <form>
+          <div>
+            <label for="eday">Enter your birthday:</label>
+            <input type="date" id="eday" name="eday" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
+            <!-- <span class="validity"></span> -->
+          <input type="submit">
+          </div>
+      </form>
     <div id="api-response"> 
       <div class="card">
         <img class="card-img-top" src="" alt="">
@@ -46,7 +53,7 @@
         </div>
       </div>
     </div>
-
+  </div>  
   <script src="./app.js"></script>
 </body>
 
