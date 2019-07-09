@@ -31,24 +31,27 @@
           <li class="nav-item">
             <a class="nav-link active bg-dark" href="saved.html" style="color: white;">Events Saved</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link active bg-dark" href="over-21.html" style="color: white;">Over 21- Breweries</a>
+          </li>
         </ul>
       <form>
           <div>
             <label for="eday">Enter your birthday:</label>
             <input type="date" id="eday" name="eday" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
             <!-- <span class="validity"></span> -->
-          <input type="submit">
+          <input type="submit" id="dateSubmit">
           </div>
       </form>
     <div id="api-response"> 
       <div class="card">
         <img class="card-img-top" src="" alt="">
-        <div class="card-body">
-          <h4 class="card-title">Event Title</h4>
-          <p class="card-text">
-            Event description
-          </p>
-          <button class="savedButton btn btn-info" data-title ="Browns Island concert" data-description ="description of the event">Add to saved events</button>
+        <div class="card-body" id="event-card"></div>
+        <div class="card-body" id="brew-card"></div>
+        
+          
+          <button class="savedButton btn btn-info" data-title="Brown's Island" data-description="that place right down there mmhmm" >Add to saved events</button>
+          <!--data-title & data-description...are they necessary?-->
     
         </div>
       </div>
