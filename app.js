@@ -31,17 +31,16 @@ $(document).ready(function () {
         console.log(response._embedded.events[0].url);
 
         for(i = 0; i < response._embedded.events.length; i++) {
-            var newCard = $("<div />", {id: "product"+i});
-            newCard.addClass("list-group list-group-flush");
-            $(".list-group-flush").addClass("list-group-item");
-            newCard.append(response._embedded.events[i].name);
-            newCard.append(response._embedded.events[i].url);
-            newCard.prepend(response._embedded.events[i].dates.start.localDate)
-            $("#event-card").prepend(newCard);
+            var newCard = `<div class ="list-group list-group-flush list-group-item" id="product${i}">
+            <a href="${response._embedded.events[i].url}"><p>${response._embedded.events[i].name}</p></a>
+            <p>${response._embedded.events[i].dates.start.localDate}</p>
+            </div>`
+            
+            $("#event-card").append(newCard);
         
         }
       //creating a checkbox for each event card  
-      $('<input type="checkbox" name="myCheckbox" />').prependTo(".list-group-item");
+     // $('<input type="checkbox" name="myCheckbox" />').prependTo(".list-group-item");
     })
         
     
@@ -60,12 +59,13 @@ $(document).ready(function () {
             //var title = $("<h1>").text(response._embedded.events[i].name);
             //var description = $("<a>").attr("href", websiteURL);
 
-        })
-            
             database.ref().push({
                 title: title,
                 description: description
             })
+        })
+            
+            
             //see whether prevChildKey is necessary or not
         database.ref().on("child_added", function(childSnapshot) {
             console.log(childSnapshot.val().response);
@@ -95,12 +95,13 @@ $(document).ready(function () {
      }).then(function (response) {
          console.log(response);
          for(i = 0; i < response.length; i++) {
-             var secondCard = $("<div>");
-             secondCard.addClass("list-group list-group-flush");
-             $(".list-group-flush").addClass("list-group-item");
-             secondCard.append(response[i].name);
-             secondCard.append(response[i].website_url);
-             secondCard.append(response[i].street);
+             var secondCard = `<div class ="list-group list-group-flush list-group-item" id="brew-destination${i}">
+             <a href="${response[i].website_ur}"><p>${response[i].name}</p></a>
+             <p>${response[i].street}</p>
+             </div>`
+
+
+
             $("#brew-card").append(secondCard);
          }
         })
