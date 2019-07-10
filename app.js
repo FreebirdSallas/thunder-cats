@@ -31,18 +31,21 @@ $(document).ready(function () {
         console.log(response._embedded.events[0].url);
 
         for(i = 0; i < response._embedded.events.length; i++) {
-            var newCard = $("<div />", {id:"product"+i});
+            var newCard = $("<div />", {id: "product"+i});
             newCard.addClass("list-group list-group-flush");
             $(".list-group-flush").addClass("list-group-item");
             newCard.append(response._embedded.events[i].name);
             newCard.append(response._embedded.events[i].url);
-            newCard.prepend(response._embedded.events[i].dates.start.localDate);
+            newCard.prepend(response._embedded.events[i].dates.start.localDate)
             $("#event-card").prepend(newCard);
         
         }
-        $('<input type="checkbox" name="myCheckbox" />').prependTo(".list-group-item");
+      //creating a checkbox for each event card  
+      $('<input type="checkbox" name="myCheckbox" />').prependTo(".list-group-item");
     })
-        //creating a checkbox for each event card
+        
+    
+        
         
         
         
@@ -50,13 +53,14 @@ $(document).ready(function () {
             event.preventDefault();
             console.log("TEST");
             var dataValue= response._embedded.events[i].name.val();
+            console.log(dataValue);
             var dataDescription= response._embedded.events[i].url.val();
             var title= $(this).attr(dataValue);
             var description= $(this).attr(dataDescription);
             //var title = $("<h1>").text(response._embedded.events[i].name);
             //var description = $("<a>").attr("href", websiteURL);
 
-           
+        })
             
             database.ref().push({
                 title: title,
@@ -116,5 +120,15 @@ $(document).ready(function () {
     
 
         
+  
+
+
+
+
+
+//});
+/*end of July 5th updates*/
+//})
+
 
             
