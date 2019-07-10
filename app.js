@@ -15,7 +15,7 @@ var database = firebase.database();
 
 $(document).ready(function () {
 
-    var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?city=Richmond&state=va&apikey=MlWuTeAgdA9ovlk9CCHiILZjDA9JuEPt"
+    var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?city=Richmond&state=va&startDateTime=2019-08-09T00:00:00Z&sort=date,asc&apikey=MlWuTeAgdA9ovlk9CCHiILZjDA9JuEPt"
 
     $.ajax({
         url: queryURL,
@@ -34,16 +34,17 @@ $(document).ready(function () {
             var newCard = $("<div />", {id: "product"+i});
             newCard.addClass("list-group list-group-flush");
             $(".list-group-flush").addClass("list-group-item");
-            
             newCard.append(response._embedded.events[i].name);
             newCard.append(response._embedded.events[i].url);
-            newCard.prepend(response._embedded.events[i].dates.start.localDate);
-        $("#event-card").prepend(newCard);
-        $(myCheckbox).append("#product"+i);
+            newCard.prepend(response._embedded.events[i].dates.start.localDate)
+            $("#event-card").prepend(newCard);
+        
         }
-        //creating a checkbox for each event card
-        var myCheckbox = $('<input type="checkbox" />', {id: "product"+i});
-        $(myCheckbox).prependTo(".list-group-item");
+      //creating a checkbox for each event card  
+      $('<input type="checkbox" name="myCheckbox" />').prependTo(".list-group-item");
+    })
+        
+    
         
         
         
@@ -78,7 +79,7 @@ $(document).ready(function () {
     
 
 //===========================================================================
-     var queryLink = "https://api.openbrewerydb.org/breweries?by_city=richmond&by_state=virginia&limit=30"
+    var queryLink = "https://api.openbrewerydb.org/breweries?by_city=richmond&by_state=virginia&limit=30"
 
      $.ajax({
          url: queryLink,
@@ -114,12 +115,11 @@ $(document).ready(function () {
 // Name, URL, images, dates.start, dates.status, venues.address
 
   //==================================================================      
-        //Make an array/for-loop for the various events
-
         
 
-        
+    
 
+        
   
 
 
@@ -130,3 +130,5 @@ $(document).ready(function () {
 /*end of July 5th updates*/
 //})
 
+
+            
