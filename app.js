@@ -40,9 +40,10 @@ $(document).ready(function () {
             $("#event-card").prepend(newCard);
         
         }
+        $('<input type="checkbox" name="myCheckbox" />').prependTo(".list-group-item");
     })
         //creating a checkbox for each event card
-        $('<input type="checkbox" name="myCheckbox" />').prependTo(".list-group-item");
+        
         
         
         $(".card-body").on("click", ".savedButton", function(event){
