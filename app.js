@@ -76,7 +76,15 @@ $(document).ready(function () {
     
         //Venue and address Property-  response._embedded.events[i]._embedded.venues[i].address
        
-    
+
+
+        //===========================================================================
+       
+   
+        
+        
+       
+        
 
 //===========================================================================
     var queryLink = "https://api.openbrewerydb.org/breweries?by_city=richmond&by_state=virginia&limit=30"
@@ -108,7 +116,7 @@ $(document).ready(function () {
                 database.ref().push({
                     title: title,
                     description: description,*/
-                })
+                
 
 //=============================================
 //ESSENTIAL PROPERTIES
@@ -116,6 +124,7 @@ $(document).ready(function () {
 
   //==================================================================      
         
+
 
     
 
@@ -126,9 +135,12 @@ $(document).ready(function () {
 
 
 
-//});
-/*end of July 5th updates*/
-//})
+
+        //==================================================================      
+        
+
+
+
 
 
             
