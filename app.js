@@ -15,7 +15,7 @@ var database = firebase.database();
 
 $(document).ready(function () {
 
-    var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?city=Richmond&state=va&apikey=MlWuTeAgdA9ovlk9CCHiILZjDA9JuEPt"
+    var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?city=Richmond&state=va&startDateTime=2019-08-09T00:00:00Z&sort=date,asc&apikey=MlWuTeAgdA9ovlk9CCHiILZjDA9JuEPt"
 
     $.ajax({
         url: queryURL,
@@ -31,41 +31,20 @@ $(document).ready(function () {
         console.log(response._embedded.events[0].url);
 
         for(i = 0; i < response._embedded.events.length; i++) {
-            var newCard = $("<div>");
+            var newCard = $("<div />", {id:"product"+i});
             newCard.addClass("list-group list-group-flush");
             $(".list-group-flush").addClass("list-group-item");
-            
             newCard.append(response._embedded.events[i].name);
             newCard.append(response._embedded.events[i].url);
             newCard.prepend(response._embedded.events[i].dates.start.localDate);
-        $("#event-card").append(newCard);
+            $("#event-card").prepend(newCard);
         
         }
+    })
         //creating a checkbox for each event card
         $('<input type="checkbox" name="myCheckbox" />').prependTo(".list-group-item");
         
-        /*function getRadioVal(form, name) {
-            var val;
-            //get list of checkbox buttons
-            var checkboxes = form.elements[name];
-
-            //loop through list of checkbox buttons
-            for(var i=0, len=checkboxes.length; i<len; i++) {
-                if(checkboxes[i].checked) {  //is it checked?
-                    val = checkboxes[i].value; //if so, hold its value
-                    break; // and break out of for loop
-                }
-            }
-            return val; //return value of checked radio or undefined if none checked
-        }
         
-        /*var myArr = [response._embedded.events[i]];
-        for(i = 0; i < response._embedded.events.length; i++) {
-            getRadioVal(); 
-        })*/
-        
-        
-
         $(".card-body").on("click", ".savedButton", function(event){
             event.preventDefault();
             console.log("TEST");
@@ -88,13 +67,14 @@ $(document).ready(function () {
             //var eventName = childSnapshot.val().response._embedded.events[i].name;
             //console.log(eventName);
         })
+    })
     
         //Venue and address Property-  response._embedded.events[i]._embedded.venues[i].address
        
     
 
 //===========================================================================
-     var queryLink = "https://api.openbrewerydb.org/breweries?by_city=richmond&by_state=virginia&limit=30"
+    var queryLink = "https://api.openbrewerydb.org/breweries?by_city=richmond&by_state=virginia&limit=30"
 
      $.ajax({
          url: queryLink,
@@ -102,15 +82,13 @@ $(document).ready(function () {
      }).then(function (response) {
          console.log(response);
          for(i = 0; i < response.length; i++) {
-             console.log(response[i].name);
-             console.log(response[i].street);
              var secondCard = $("<div>");
              secondCard.addClass("list-group list-group-flush");
              $(".list-group-flush").addClass("list-group-item");
              secondCard.append(response[i].name);
              secondCard.append(response[i].website_url);
              secondCard.append(response[i].street);
-            $("#over-21-card").prepend(secondCard);
+            $("#brew-card").append(secondCard);
          }
         })
             /*$(".card-body").on("click", ".savedButton", function(event){
@@ -132,32 +110,10 @@ $(document).ready(function () {
 // Name, URL, images, dates.start, dates.status, venues.address
 
   //==================================================================      
-        //Make an array/for-loop for the various events
+        
+
+    
 
         
 
-        
-
-  
-
-
-
-//DJH July 5th updates: on click pushes data-title & data-description from events page to database. firebase linked, 2nd JS file appends saved events, nav tabs updated
-/*$(".card-body").on("click", ".savedButton", function(event){
-    event.preventDefault();
-    console.log("TEST");
-    var title= $(this).attr("data-value");
-    var description= $(this).attr("data-description");
-    //var title = $("<h1>").text(_embedded.events[i].name);
-    //var description = $("<a>").attr("href", _embedded.events[i].url);
-    database.ref().push({
-        title: title,
-        description: description,
-    })*/
-})
-//});
-/*end of July 5th updates*/
-//})
-    })
-
-
+            
