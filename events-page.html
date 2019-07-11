@@ -13,7 +13,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <!-- Firebase Reference -->
   <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
- 
+  <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 </head>
 
 <body class="event-body">
@@ -39,15 +39,17 @@
       <form>
           <div>
             <label for="eday" class="eventBar">Event Date Here:</label>
-            <input type="date" id="eday" name="eday" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
+            <input type="date" id="eday" name="eday">
+            <!-- required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"> put back to previous line-->
+            
             <!-- <span class="validity"></span> -->
-          <input type="submit" id="dateSubmit">
+          <button id="dateSearch">Search Events</button>
           </div>
       </form>
     <div id="api-response"> 
       <div class="card">
         <img class="card-img-top" src="" alt="">
-        <button class="savedButton btn btn-info" data-title ="Browns Island concert" data-description ="description of the event">Add to saved events</button>
+ 
         <h1>Local Events</h1>
         <div class="card-body" id="event-card"></div>
         <h1>Local Breweries</h1>
